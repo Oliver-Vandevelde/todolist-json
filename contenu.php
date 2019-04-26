@@ -1,20 +1,21 @@
 <?php
-    // require ('formulaire.php');
-    try {
-        // On essayes de récupérer le contenu existant
-        $s_fileData = file_get_contents('todo.json');
+    require ('formulaire.php');
+    
+    // try {
+    //     // On essayes de récupérer le contenu existant
+    //     $s_fileData = file_get_contents('todo.json');
 
-        if( !$s_fileData || strlen($s_fileData) == 0 ) {
-            // On crée le tableau JSON
-            $tableau_pour_json = array();
-        } else {
-            // On récupère le JSON dans un tableau PHP
-            $tableau_pour_json = json_decode($s_fileData, true);
-        }
-    }
-    catch( Exception $e ) {
-        echo "Erreur : ".$e->getMessage();
-    }
+    //     if( !$s_fileData || strlen($s_fileData) == 0 ) {
+    //         // On crée le tableau JSON
+    //         $tableau_pour_json = array();
+    //     } else {
+    //         // On récupère le JSON dans un tableau PHP
+    //         $tableau_pour_json = json_decode($s_fileData, true);
+    //     }
+    // }
+    // catch( Exception $e ) {
+    //     echo "Erreur : ".$e->getMessage();
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,24 +38,28 @@
             <h2>A faire :</h2>
             <section class="a_faire" id="faire">
                 <?php
-                    foreach ($tableau_pour_json as $key){
-                        echo "<p draggable=true classe='textFaire'><input class='checkbox' name='checkbox[]' id='checkbox' type='checkbox' value='".$key['todo']."' onclick='check()'/> ".$key['todo']."</p>";
+                    foreach ($tableau_pour_json as $value){
+                        if ($value['value'] === 1){
+                        echo "<p draggable=true classe='textFaire'><input class='checkbox' name='checkbox' id='checkbox' type='checkbox' value='".$value['todo']."' onclick='check()'/> ".$value['todo']."</p>";
                     }
+                }
                 ?>
             </section>
-            <p class="supprimez" id="button"><button name="delete" type="submit" class="btn btn-outline-success">Fini ? Archive le(s) !</button></p>
+            <p class="supprimez" id="button"><button name="archiver" type="submit" class="btn btn-outline-success">Fini ? Archive le(s) !</button></p>
             <!-- style="display:none"-->
             <h2>Archive :</h2>
             <section class="fait">
             <?php
-                // foreach ($tableau_pour_json as $key){
-                //     echo "<p draggable=true classe='textFaire'><input class='checkbox' name='checkbox[]' id='checkbox' type='checkbox' value='".$key['fait']."' onclick='check()'/> ".$key['fait']."</p>";
-                // }
+                foreach ($tableau_pour_json as $value){
+                    if ($value['value'] === 0){
+                        echo "<p class='textFait'><input class='archiveList' name='checkbox' type='checkbox' value='".$value['todo']."' onclick='dlt()'/> ".$value['todo']."</p>";
+                }
+            }
             ?>
-                <p class="supprimez" id="delete"><button name="supp" type="submit" class="btn btn-outline-success">Supprimer de l'archive ?</button></p>
+                <p class="supprimez" id="delete"><button name="delete" type="submit" class="btn btn-outline-success">Supprimer de l'archive ?</button></p>
             </section>
         </form>
-        <form class="add" method="POST" action="formulaire.php">
+        <form class="add" method="POST" action="">
             <label class="textAdd">Ajouter une tache : </label>
             <input class="form-control" type="text-area" name="todo" cols="20" rows="1" required>
             <input type="submit" class="btn btn-outline-success" value="Ajouter">

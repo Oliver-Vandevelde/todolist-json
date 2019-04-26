@@ -10,11 +10,9 @@ body nav { margin: 1% 0; }
 
 .todo form h2 { font-size: 30px; text-decoration: underline; font-family: 'Proza Libre', sans-serif; }
 
-.todo form p , .todo label { font-size: 20px; }
+.todo form p, .todo form label { font-size: 20px; }
 
 .todo .archiver { height: 400px; overflow: auto; }
-
-.todo .archiver .supprimez { display: none; }
 
 .todo .archiver .textFaire { padding: 0; }
 
