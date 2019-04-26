@@ -14,6 +14,8 @@ body nav { margin: 1% 0; }
 
 .todo .archiver { height: 400px; overflow: auto; }
 
+.todo .archiver .supprimez { display: none; }
+
 .todo .archiver .textFaire { padding: 0; }
 
 .todo .archiver .textFait { -webkit-text-decoration-line: line-through; text-decoration-line: line-through; color: grey; padding: 0; }
