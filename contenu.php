@@ -29,6 +29,24 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Proza+Libre" rel="stylesheet">
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+            xfbml            : true,
+            version          : 'v3.3'
+            });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);    
+        js.id = id;
+        js.src = 'https://connect.facebook.net/fr_FR/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 <nav class="search container-fluid">
     <input class="form-control col-sm-6 col-md-5 col-lg-4 col-xl-3" name="recherche" type="text" placeholder="Dites-moi tout">
 </nav>
@@ -65,6 +83,13 @@
             <input type="submit" class="btn btn-outline-success" value="Ajouter">
         </form>
     </section>
+    <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="343861469596936"
+        theme_color="#67b868"
+        logged_in_greeting="Salut , comment je peux vous aider ?"
+        logged_out_greeting="Salut , comment je peux vous aider ?">
+    </div>
     <script src="./assets/js/todolist.js"></script>
 </body>
 </html>
